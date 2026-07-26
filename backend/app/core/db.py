@@ -56,6 +56,9 @@ def clean_db_url(url: str) -> tuple[str, dict]:
     return cleaned_url, connect_args
 
 
+from sqlalchemy.pool import NullPool
+
+
 def _build_engine() -> object:
     settings = get_settings()
     db_url, connect_args = clean_db_url(settings.database_url)
@@ -64,15 +67,13 @@ def _build_engine() -> object:
         db_url,
         connect_args=connect_args,
         echo=settings.log_level == "DEBUG",  # SQL logging in debug mode only
-        pool_size=5,          # base connections kept alive
-        max_overflow=10,      # extra connections allowed under load
-        pool_pre_ping=False,   # disabled to prevent transaction state errors with Neon pooler
-        pool_recycle=1800,    # recycle connections every 30 min (Neon idle timeout)
+        poolclass=NullPool,
     )
 
 
 # Module-level singletons — created once when the module is first imported.
 engine = _build_engine()
+
 
 AsyncSessionLocal = async_sessionmaker(
     bind=engine,

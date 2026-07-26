@@ -14,15 +14,11 @@ Note: We do NOT auto-create tables here. Run Alembic migrations:
 
 from __future__ import annotations
 
-import asyncio
 import logging
-import sys
-
-if sys.platform == "win32":
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 
 from app.core.config import get_settings
 from app.api.routes import health, papers, chat
