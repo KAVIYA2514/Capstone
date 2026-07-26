@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --scrollbar-thumb: #262b42;
+    --scrollbar-track: #10131f;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  *::-webkit-scrollbar { width: 6px; height: 6px; }
+  *::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+  *::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+
+  body {
+    @apply bg-surface-950 text-slate-100 font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1, h2, h3, h4, h5, h6 { @apply font-semibold tracking-tight; }
+}
+
+@layer components {
+  /* ── Glassmorphism card ── */
+  .glass {
+    @apply bg-surface-800/60 backdrop-blur-md border border-white/5;
+  }
+
+  /* ── Gradient text ── */
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-400 to-violet-400 bg-clip-text text-transparent;
+  }
+
+  /* ── Subtle glow on focus ── */
+  .input-glow {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500/50 focus:border-brand-500/50;
+  }
+
+  /* ── Chat bubble base ── */
+  .bubble-user {
+    @apply bg-brand-600/90 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%] ml-auto;
+  }
+  .bubble-assistant {
+    @apply glass text-slate-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[90%];
+  }
+
+  /* ── Source citation card ── */
+  .source-card {
+    @apply glass rounded-xl p-3 cursor-pointer transition-all duration-200
+           hover:border-brand-500/40 hover:bg-surface-700/60;
+  }
+
+  /* ── Button variants ── */
+  .btn-primary {
+    @apply bg-brand-500 hover:bg-brand-600 text-white font-medium px-4 py-2 rounded-xl
+           transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-ghost {
+    @apply text-slate-400 hover:text-slate-100 hover:bg-white/5 px-3 py-2 rounded-lg
+           transition-all duration-200;
+  }
+
+  /* ── Typing indicator dots ── */
+  .typing-dot {
+    @apply w-1.5 h-1.5 rounded-full bg-brand-400;
+    animation: bounce 1.4s infinite ease-in-out both;
+  }
+  .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+  .typing-dot:nth-child(3) { animation-delay: 0s; }
+}
+
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40%            { transform: scale(1); opacity: 1;   }
+}
+
+/* ── Prose styling for assistant markdown ── */
+.prose-chat {
+  @apply text-slate-200 leading-relaxed text-sm;
+}
+.prose-chat p  { @apply mb-3 last:mb-0; }
+.prose-chat ul { @apply list-disc list-inside mb-3 space-y-1; }
+.prose-chat ol { @apply list-decimal list-inside mb-3 space-y-1; }
+.prose-chat strong { @apply text-white font-semibold; }
+.prose-chat code   { @apply bg-surface-900 text-brand-300 px-1.5 py-0.5 rounded font-mono text-xs; }
+.prose-chat pre    { @apply bg-surface-900 rounded-xl p-4 mb-3 overflow-x-auto; }
+.prose-chat pre code { @apply bg-transparent p-0 text-slate-300; }
+.prose-chat blockquote {
+  @apply border-l-4 border-brand-500/50 pl-4 italic text-slate-400 mb-3;
+}

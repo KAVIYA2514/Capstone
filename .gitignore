@@ -1,0 +1,61 @@
+# ─── Secrets ──────────────────────────────────────────────────────────────────
+.env
+.env.*
+.env.example
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+*.whl
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+*.xml
+
+# ─── Node / Frontend ──────────────────────────────────────────────────────────
+node_modules/
+dist/
+.cache/
+*.local
+
+# ─── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ─── Data / ML ────────────────────────────────────────────────────────────────
+backend/data/sample_papers/
+*.faiss
+*.pkl
+*.bin
+sentence_transformers_cache/
+hf_cache/
+
+# ─── IDE ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ─── Docker ───────────────────────────────────────────────────────────────────
+*.override.yml
+
+# ─── Alembic ──────────────────────────────────────────────────────────────────
+# (keep migrations, but ignore pycache inside)
+backend/alembic/__pycache__/
