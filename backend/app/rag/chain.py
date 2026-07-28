@@ -9,8 +9,7 @@ LLM Provider switching:
 - LLM_PROVIDER=ollama    → ChatOpenAI pointed at local Ollama server
 Both use the OpenAI-compatible API, so LangChain's ChatOpenAI class works
 unchanged for both. This is the "generation trade-off" talking point:
-  - NVIDIA NIM (meta/llama-4-maverick-17b-128e-instruct): hosted 17B MoE
-    model, high quality, requires API key, ~1-3 s/response
+  - NVIDIA NIM (meta/llama-3.3-70b-instruct): hosted 70B model, high quality, requires API key, ~1-3 s/response
   - Ollama (llama3.1:8b): local 8B model, ~3-8 s/response on CPU,
     fully offline, free after pull
 

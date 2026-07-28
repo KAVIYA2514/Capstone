@@ -48,7 +48,7 @@ class Settings(BaseSettings):
 
     # ── LLM ────────────────────────────────────────────────────────────────
     llm_provider: Literal["nvidia_nim", "ollama"] = "nvidia_nim"
-    chat_model: str = "meta/llama-4-maverick-17b-128e-instruct"
+    chat_model: str = "meta/llama-3.1-8b-instruct"
 
     # Ollama fallback — only used when llm_provider = "ollama"
     ollama_base_url: str = "http://localhost:11434"
